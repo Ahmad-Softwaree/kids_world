@@ -17,7 +17,9 @@ const Footer = () => {
           {/* Logo and Shop Name */}
           <div className="flex flex-row justify-center items-center gap-2 mb-6">
             <Logo />
-            <h2 className="font-bold text-xl gradient-text">{t("shop_name")}</h2>
+            <h2 className="font-bold text-xl gradient-text">
+              {t("shop_name")}
+            </h2>
           </div>
 
           {/* Description */}

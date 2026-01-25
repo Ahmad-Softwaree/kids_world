@@ -93,7 +93,10 @@ export async function POST(request: NextRequest) {
                 </div>
                 <div class="field">
                   <div class="field-label">Message:</div>
-                  <div class="field-value">${message.replace(/\n/g, "<br>")}</div>
+                  <div class="field-value">${message.replace(
+                    /\n/g,
+                    "<br>"
+                  )}</div>
                 </div>
               </div>
               <div class="footer">
