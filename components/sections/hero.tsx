@@ -1,11 +1,12 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Apple, Play } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { FadeInMotion, SlideInMotion } from "../shared/animate";
 import Image from "next/image";
+import { Android, Apple } from "iconsax-reactjs";
 
 const Hero = () => {
   const t = useTranslations("hero");
@@ -81,7 +82,7 @@ const Hero = () => {
               </Link>
               <Link href="#" className="group">
                 <div className="flex items-center gap-3 px-6 py-3 bg-card border rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-300">
-                  <Play className="h-7 w-7 text-foreground fill-foreground" />
+                  <Android className="h-7 w-7 text-foreground fill-foreground" />
                   <div className="text-left">
                     <p className="text-xs text-muted-foreground">
                       {t("download_on")}
