@@ -57,8 +57,12 @@ const Features = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
         {features.map((feature, index) => (
-          <SlideInMotion key={index} direction="up" delay={0.1 * (index + 1)}>
-            <Card className="feature-card">
+          <SlideInMotion
+            className="h-full"
+            key={index}
+            direction="up"
+            delay={0.1 * (index + 1)}>
+            <Card className="feature-card h-full">
               <feature.icon className="feature-icon" />
               <h3 className="feature-title">{t(feature.titleKey as any)}</h3>
               <p className="feature-description">{t(feature.descKey as any)}</p>

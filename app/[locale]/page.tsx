@@ -1,24 +1,16 @@
-import About from "@/components/sections/about";
-import Certifications from "@/components/sections/certifications";
-import { Skills } from "@/components/sections/skills";
-import Contact from "@/components/sections/contact";
-import Experiences from "@/components/sections/experiences";
 import Hero from "@/components/sections/hero";
-import Projects from "@/components/sections/projects";
-import Tools from "@/components/sections/tools";
-import Services from "@/components/sections/services";
+import About from "@/components/sections/about";
+import Features from "@/components/sections/features";
+import Steps from "@/components/sections/steps";
+import Contact from "@/components/sections/contact";
 
 export default function Home() {
   return (
     <div className="w-full">
       <Hero />
       <About />
-      <Skills />
-      <Services />
-      <Experiences />
-      <Projects />
-      <Tools />
-      <Certifications />
+      <Features />
+      <Steps />
       <Contact />
     </div>
   );

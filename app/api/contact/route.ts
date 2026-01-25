@@ -14,10 +14,10 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const recipientEmail = process.env.RECIPIENT_EMAIL;
+    const recipientEmail = process.env.EMAIL;
 
     if (!recipientEmail) {
-      console.error("RECIPIENT_EMAIL is not set in environment variables");
+      console.error("EMAIL is not set in environment variables");
       return NextResponse.json(
         { error: "Server configuration error" },
         { status: 500 }
@@ -25,10 +25,10 @@ export async function POST(request: NextRequest) {
     }
 
     const { data, error } = await resend.emails.send({
-      from: "Yari Mndallan Contact Form <onboarding@resend.dev>",
+      from: "Yari Mndalan Contact Form <onboarding@resend.dev>",
       to: [recipientEmail],
       replyTo: email,
-      subject: "New Contact Form Submission - Yari Mndallan",
+      subject: "New Contact Form Submission - Yari Mndalan",
       html: `
         <!DOCTYPE html>
         <html>
@@ -84,7 +84,7 @@ export async function POST(request: NextRequest) {
             <div class="container">
               <div class="header">
                 <h1>New Contact Form Submission</h1>
-                <p>Yari Mndallan Shop</p>
+                <p>Yari Mndalan Shop</p>
               </div>
               <div class="content">
                 <div class="field">
@@ -100,7 +100,7 @@ export async function POST(request: NextRequest) {
                 </div>
               </div>
               <div class="footer">
-                <p>This email was sent from the Yari Mndallan contact form.</p>
+                <p>This email was sent from the Yari Mndalan contact form.</p>
                 <p>Reply directly to this email to respond to the sender.</p>
               </div>
             </div>

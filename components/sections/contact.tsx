@@ -9,11 +9,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { Send } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
+import { toast } from "sonner";
 
 const Contact = () => {
   const t = useTranslations("contact");
-  const { toast } = useToast();
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
@@ -36,23 +35,18 @@ const Contact = () => {
       const data = await response.json();
 
       if (response.ok) {
-        toast({
-          title: t("success_title"),
+        toast.success(t("success_title"), {
           description: t("success_message"),
         });
         setFormData({ email: "", message: "" });
       } else {
-        toast({
-          title: t("error_title"),
+        toast.error(t("error_title"), {
           description: data.error || t("error_message"),
-          variant: "destructive",
         });
       }
     } catch (error) {
-      toast({
-        title: t("error_title"),
+      toast.error(t("error_title"), {
         description: t("error_message"),
-        variant: "destructive",
       });
     } finally {
       setLoading(false);

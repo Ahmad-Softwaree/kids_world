@@ -25,9 +25,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ahmad Software",
+  title: "Yari Mndalan - Kids Clothing Store",
   description:
-    "Ahmad Software Full stack Portfolio, Contains all project, services, skills and certifications, come and see My world",
+    "Yari Mndalan is your go-to kids clothing store, offering a delightful range of stylish and comfortable apparel for children of all ages. Discover our latest collections and enjoy a seamless shopping experience tailored for parents and kids alike.",
 };
 
 export default async function LocaleLayout({
@@ -53,8 +53,8 @@ export default async function LocaleLayout({
           locale == "en"
             ? "english_font"
             : locale == "ar"
-              ? "arabic_font"
-              : "kurdish_font"
+            ? "arabic_font"
+            : "kurdish_font"
         }  antialiased min-h-screen flex flex-col overflow-x-hidden`}>
         <NextIntlClientProvider>
           <Providers>

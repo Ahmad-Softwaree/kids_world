@@ -47,14 +47,14 @@ export default function Error({
             {error.message}
           </p>
         </div>
-        ){/* Action Buttons */}
+        {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
           <Button
             size="lg"
             className="min-w-[160px] rounded-full"
             onClick={reset}>
             <RefreshCcw className="mr-2 h-5 w-5" />
-            {t("tryAgain")}
+            {t("retry_button")}
           </Button>
           <Button
             variant="outline"
@@ -63,7 +63,7 @@ export default function Error({
             asChild>
             <Link href={`/${locale}`}>
               <Home className="mr-2 h-5 w-5" />
-              {t("returnHome")}
+              {t("home_button")}
             </Link>
           </Button>
         </div>

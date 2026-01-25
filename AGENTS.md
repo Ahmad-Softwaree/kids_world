@@ -1,6 +1,18 @@
 # 🤖 Agent Instructions & Coding Standards
 
-This file contains **strict coding standards and architecture patterns** for this project. All AI agents and developers **MUST** follow these rules to maintain consistency.
+This file contains **strict coding standards and architecture patterns** for the **Yari Mndalan Kids Shop Landing Page**. All AI agents and developers **MUST** follow these rules to maintain consistency.
+
+---
+
+## 🚨 CRITICAL: Project Overview
+
+This is a **single-page landing page** for **Yari Mndalan**, an online kids shop hosted on Shopify. The page showcases:
+
+- Shop features and benefits
+- Purchase flow steps
+- Contact form
+- Multi-language support (English, Arabic, Kurdish)
+- Link to the main Shopify store at `shop.yarimndalan.com`
 
 ---
 
@@ -19,6 +31,13 @@ This file contains **strict coding standards and architecture patterns** for thi
 - All environment variables go in the single `.env` file
 - The `.env` file is gitignored and safe for local development
 
+**Required Environment Variables:**
+
+```env
+RESEND_API_KEY=your_resend_api_key
+RECIPIENT_EMAIL=dr.ahamd.salah.54@gmail.com
+```
+
 ---
 
 ## 🚨 CRITICAL: Library Enforcement
@@ -33,26 +52,24 @@ This file contains **strict coding standards and architecture patterns** for thi
 - **Tailwind CSS 4** - For styling (with CSS variables)
 - **Lucide React** - Icon library
 - **cn() utility** from `@/lib/utils` - For conditional styling
-- **framer-motion** - Animation library (use via reusable components in animate.tsx)
-
-#### **Data Fetching & State Management**
-
-- **Static Data** - For portfolio content (projects, certifications, skills, services)
+- **motion/react** - Animation library (Framer Motion fork)
 
 #### **Framework & Core**
 
-- **Next.js** - React framework (App Router)
+- **Next.js 15** - React framework (App Router)
 - **React Server Components (RSC)** - Default component pattern
 - **TypeScript** - All code must be TypeScript
 - **Bun** - Package manager and runtime (ONLY package manager allowed)
 
 #### **Forms & Validation**
 
-- **Zod** - Schema validation (if needed for contact forms)
+- **Zod** - Schema validation (if needed for forms)
+- **React Hook Form** - Form state management (with shadcn/ui Form)
 
 #### **URL & State Management**
 
 - **nuqs** - Type-safe URL parameter management
+- **React useState** - For simple client-side state (forms, etc.)
 
 #### **Theming**
 
@@ -62,22 +79,26 @@ This file contains **strict coding standards and architecture patterns** for thi
 
 - **next-intl** - Translation framework for Next.js
 
-#### **File Uploads** (if needed)
+#### **Email Service**
 
-- **uploadthing** - File upload service (already integrated)
+- **Resend** - Email sending service for contact form
+
+#### **Notifications**
+
+- **sonner** - Toast notifications
 
 ### ❌ FORBIDDEN LIBRARIES
 
 **DO NOT USE:**
-Other form libraries: Formik (use react-hook-form with shadcn/ui Form)
 
-- ❌ Custom HTTP clients: axios, fetch wrappers (use Server Actions instead)
-- ❌ State management: Redux, Zustand, Jotai, Recoil, etc.
+- ❌ Custom HTTP clients: axios, fetch wrappers (use native fetch with Server Actions)
+- ❌ State management: Redux, Zustand, Jotai, Recoil, etc. (use React useState or Server Components)
 - ❌ CSS frameworks: Bootstrap, Bulma, Foundation, etc.
 - ❌ Icon libraries: Font Awesome, React Icons, Heroicons (use Lucide only)
 - ❌ Other validation: Yup, Joi, class-validator (use Zod only)
-- ❌ Raw URL params: searchParams, useSearchParams, URLSearchParams (use nuq
-  Before adding ANY new library:
+- ❌ Other animation libraries: react-spring, anime.js (use motion/react only)
+
+Before adding ANY new library:
 
 1. Check if it's in the APPROVED list
 2. Check if existing approved libraries can solve the problem
@@ -89,32 +110,32 @@ Other form libraries: Formik (use react-hook-form with shadcn/ui Form)
 
 ### 1️⃣ Component Organization
 
-**See:** [docs/component-organization.md](docs/component-organization.md)
-
 **Key Rules:**
 
 - ✅ Extract components when pages exceed ~100 lines
-- ✅ Organize by type: `ui/`, `cards/`, `btn/`, `layout/`, `sections/`, `shared/`, `certifications/`, `projects/`, `skills/`, `tools/`
+- ✅ Organize by type: `layout/`, `sections/`, `shared/`, `ui/`
 - ❌ NO massive page files with hundreds of lines of JSX
 - ❌ NO mixing unrelated components in the same file
 
 **Component Folders:**
 
-- `ui/` - shadcn/ui primitives ONLY (Button, Card, Dialog, etc.)
-- `cards/` - Card components for different entities (projects, skills, etc.)
-- `btn/` - Custom button components for filters and actions
-- `layout/` - Layout components (header, footer, navigation)
-- `sections/` - Page sections (hero, about, services, etc.)
-- `shared/` - Globally shared components (Loading, NoData, Search, etc.)
-- `certifications/` - Certification page specific components
-- `projects/` - Projects page specific components
-- `skills/` - Skills page specific components
-- `tools/` - Tools page specific components
+- `layout/` - Header, Footer, Logo
+- `sections/` - Hero, About, Features, Steps, Contact
+- `shared/` - Reusable components (Animate, Loading, etc.)
+- `ui/` - shadcn/ui primitives ONLY (Button, Card, Input, etc.)
+
+**Current Sections (in order):**
+
+1. Hero - Welcome message with animated blobs and CTA
+2. About - Shop story, mission, values
+3. Features - 6 feature cards with hover animations
+4. Steps - Purchase flow visualization
+5. Contact - Contact form with email integration
 
 **Folder Structure:**
 
 ```
-Portfolio/
+kids_world/
 ├── AGENTS.md                    # AI agent coding standards & rules
 ├── README.md                    # Project documentation
 ├── components.json              # shadcn/ui configuration
@@ -122,7 +143,7 @@ Portfolio/
 ├── tsconfig.json               # TypeScript configuration
 ├── package.json                # Dependencies & scripts
 ├── postcss.config.mjs          # PostCSS configuration
-├── proxy.ts                    # Middleware proxy configuration
+├── .env                        # Environment variables (gitignored)
 │
 ├── app/                        # Next.js App Router
 │   ├── layout.tsx              # Root layout
@@ -130,94 +151,38 @@ Portfolio/
 │   ├── not-found.tsx           # Global 404 page
 │   ├── [locale]/               # Localized routes
 │   │   ├── layout.tsx          # Locale layout
-│   │   ├── page.tsx            # Home page
-│   │   ├── globals.css         # Global styles
-│   │   ├── providers.tsx       # Context providers
+│   │   ├── page.tsx            # Landing page
+│   │   ├── globals.css         # Global styles with kid-friendly colors
+│   │   ├── providers.tsx       # Context providers (Theme, i18n, Toaster)
 │   │   ├── loading.tsx         # Loading state
 │   │   ├── error.tsx           # Error boundary
-│   │   ├── not-found.tsx       # Locale 404 page
-│   │   ├── certifications/     # Certifications page
-│   │   ├── projects/           # Projects page
-│   │   ├── skills/             # Skills page
-│   │   └── tools/              # Tools page
+│   │   └── not-found.tsx       # Locale 404 page
 │   └── api/                    # API routes
-│       └── contact/            # Contact form API
+│       └── contact/            # Contact form API with Resend
+│           └── route.ts
 │
 ├── components/                 # React components
 │   ├── ui/                     # shadcn/ui primitives (Button, Card, etc.)
-│   ├── cards/                  # Card components
-│   │   ├── certification-card.tsx
-│   │   ├── experience-card.tsx
-│   │   ├── project-card.tsx
-│   │   ├── service-card.tsx
-│   │   ├── skill-card.tsx
-│   │   ├── special-tool-card.tsx
-│   │   └── tool-card.tsx
-│   ├── btn/                    # Button components
-│   │   ├── certification-type-btn.tsx
-│   │   ├── project-tag-btn.tsx
-│   │   ├── project-tech-btn.tsx
-│   │   ├── project-type-btn.tsx
-│   │   ├── skill-level-btn.tsx
-│   │   ├── skill-type-btn.tsx
-│   │   └── tool-type-btn.tsx
 │   ├── layout/                 # Layout components
-│   │   ├── header.tsx
-│   │   ├── footer.tsx
-│   │   ├── logo.tsx
-│   │   ├── nav-menu.tsx
-│   │   └── mobile-navigation.tsx
-│   ├── sections/               # Page sections
-│   │   ├── hero.tsx
-│   │   ├── about.tsx
-│   │   ├── services.tsx
-│   │   ├── experiences.tsx
-│   │   ├── skills.tsx
-│   │   ├── projects.tsx
-│   │   ├── certifications.tsx
-│   │   ├── tools.tsx
-│   │   └── contact.tsx
+│   │   ├── header.tsx          # Header with shop link, social media
+│   │   ├── footer.tsx          # Footer with info and links
+│   │   └── logo.tsx            # Shop logo
+│   ├── sections/               # Landing page sections
+│   │   ├── hero.tsx            # Hero with animated blobs
+│   │   ├── about.tsx           # About shop (founded, mission, values)
+│   │   ├── features.tsx        # 6 feature cards
+│   │   ├── steps.tsx           # Purchase flow steps
+│   │   └── contact.tsx         # Contact form
 │   ├── shared/                 # Shared components
-│   │   ├── animate.tsx         # Animation wrapper
-│   │   ├── Loading.tsx
-│   │   ├── NoData.tsx
-│   │   ├── Search.tsx
-│   │   └── scroll-to-top.tsx
-│   ├── certifications/         # Certification page components
-│   │   ├── CertificationsHeader.tsx
-│   │   ├── CertificationsContent.tsx
-│   │   └── CertificationGrid.tsx
-│   ├── projects/               # Projects page components
-│   │   ├── ProjectsHeader.tsx
-│   │   ├── ProjectsContent.tsx
-│   │   └── ProjectsGrid.tsx
-│   ├── skills/                 # Skills page components
-│   │   ├── SkillsHeader.tsx
-│   │   ├── SkillsFilter.tsx
-│   │   └── SkillsGrid.tsx
-│   ├── tools/                  # Tools page components
-│   │   ├── ToolsHeader.tsx
-│   │   ├── ToolsContent.tsx
-│   │   ├── ToolsGrid.tsx
-│   │   └── ContactHeader.tsx
-│   ├── lang-toggle.tsx         # Language switcher
-│   ├── theme-toggle.tsx        # Dark/light mode toggle
-│   └── NotFound.tsx            # 404 component
-│
-├── hooks/                      # Custom React hooks
-│   ├── useCertificationQueries.tsx
-│   ├── useProjectQueries.tsx
-│   ├── useSearchQuery.tsx
-│   ├── useSkillQueries.tsx
-│   └── useToolsQueries.tsx
+│   │   ├── animate.tsx         # Animation wrapper (motion/react)
+│   │   ├── Loading.tsx         # Loading component
+│   │   └── scroll-to-top.tsx   # Scroll to top button
+│   ├── lang-toggle.tsx         # Language switcher (en/ar/ckb)
+│   └── theme-toggle.tsx        # Dark/light mode toggle
 │
 ├── lib/                        # Utility functions & configurations
 │   ├── utils.ts                # cn() utility & helpers
-│   ├── enums.ts                # TypeScript enums
-│   ├── functions.ts            # Helper functions
-│   ├── config/                 # Configuration files
-│   ├── data/                   # Static data (projects, skills, etc.)
-│   └── fetch/                  # Data fetching utilities
+│   └── enums.ts                # TypeScript enums (if needed)
 │
 ├── i18n/                       # Internationalization
 │   ├── navigation.ts           # i18n navigation
@@ -230,32 +195,62 @@ Portfolio/
 │   └── ckb.json                # Kurdish translations
 │
 ├── types/                      # TypeScript types
-│   └── types.ts                # Global type definitions
+│   └── global.ts               # Global type definitions
 │
 ├── docs/                       # Documentation
 │   ├── component-organization.md
 │   ├── ui-components.md
-│   ├── documentation-standards.md
-│   ├── folder-file-conventions.md
 │   ├── internationalization.md
 │   ├── motion.md
 │   ├── package-management.md
 │   ├── theme-dark-light-mode.md
 │   └── url-parameters.md
 │
-├── public/                     # Static assets
-│   ├── certificates/           # Certificate images
-│   ├── fonts/                  # Custom fonts
-│   ├── pdf/                    # PDF files
-│   ├── projects/               # Project images
-│   ├── tools/                  # Tool images
-│   └── works/                  # Work/experience images
-│
-└── project.inlang/             # Inlang i18n configuration
-    ├── project_id
-    ├── settings.json
-    └── cache/
+└── public/                     # Static assets
+    └── fonts/                  # Custom fonts
 ```
+
+│ └── fetch/ # Data fetching utilities
+│
+├── i18n/ # Internationalization
+│ ├── navigation.ts # i18n navigation
+│ ├── request.ts # i18n request handler
+│ └── routing.ts # i18n routing config
+│
+├── messages/ # Translation files
+│ ├── en.json # English translations
+│ ├── ar.json # Arabic translations
+│ └── ckb.json # Kurdish translations
+│
+├── types/ # TypeScript types
+│ └── types.ts # Global type definitions
+│
+├── docs/ # Documentation
+│ ├── component-organization.md
+│ ├── ui-components.md
+│ ├── documentation-standards.md
+│ ├── folder-file-conventions.md
+│ ├── internationalization.md
+│ ├── motion.md
+│ ├── package-management.md
+│ ├── theme-dark-light-mode.md
+│ └── url-parameters.md
+│
+├── public/ # Static assets
+│ ├── certificates/ # Certificate images
+│ ├── fonts/ # Custom fonts
+│ ├── pdf/ # PDF files
+│ ├── projects/ # Project images
+│ ├── tools/ # Tool images
+│ └── works/ # Work/experience images
+│
+└── project.inlang/ # Inlang i18n configuration
+├── project_id
+├── settings.json
+└── cache/
+
+````
+
 
 ### 2️⃣ UI Components (shadcn/ui)
 
@@ -275,68 +270,95 @@ Portfolio/
 ```bash
 npx shadcn@latest add button
 npx shadcn@latest add card
-npx shadcn@lateststatic data for portfolio content?
+npx shadcn@latest add input
+````
 
-### Components
+### 3️⃣ Styling & Reusable Classes
 
-- [ ] Is this component in the correct folder (`ui/`, `cards/`, `btn/`, `layout/`, `sections/`, `shared/`, etc.)?
-- [ ] Is the page file under ~100 lines?
-- [ ] Am I using shadcn/ui components (not custom)?
+**Key Rules:**
 
-### Data & Hooks
+- ✅ Use reusable classes defined in `globals.css` @layer components
+- ✅ Handle hover states with Tailwind `group-hover:` only (NO useState)
+- ✅ Use kid-friendly color palette (vibrant purples, oranges, cyans)
+- ❌ NO inline styles
+- ❌ NO duplicate class definitions
 
-- [ ] Did I create hooks in `hooks/` directory?
-- [ ] Did I add static data to `lib/data/` directory?
-- [ ] Did I add helper functions to `lib/functions.ts`?
-- [ ] Did I add enums to `lib/enums.ts`
-### Components
+**Reusable Classes:**
 
-- [ ] Is this component in the correct folder?
-- [ ] Is the page file under ~100 lines?
-- [ ] Am I using shadcn/ui components (not custom)?
+```css
+.section-container
+  .section-title
+  .section-subtitle
+  .feature-card
+  .feature-icon
+  .feature-title
+  .btn-primary
+  .gradient-text
+  .blob-primary;
+```
 
-### Data Fetching
+### 4️⃣ Animations
 
-- [ ] Did I create action file in `lib/react-query/actions/`?
-- [ ] Did I create query hooks in `lib/react-query/queries/`?
-- [ ] Did I add query keys to `lib/react-query/keys.ts`?
-- [ ] Did I add URLs to `lib/constants/urls.ts` (if needed)?
-- [ ] Did I implement all three patterns (limited, infinite, specific)?
+**See:** [docs/motion.md](docs/motion.md)
 
-### Code Quality
+- ✅ Use `motion/react` for animations
+- ✅ Use animation wrappers from `animate.tsx`
+- ✅ Keep animations smooth and playful (kid-friendly)
+- ❌ NO heavy/slow animations
 
-- [ ] All files are TypeScript (`.ts` or `.tsx`)?
-- [ ] Server actions marked with `'use server'`?
-- [ ] Client components marked with `'use client'`?
-- [ ] Using `cn()` for conditional Tailwind classes?
+### 5️⃣ Internationalization
+
+**See:** [docs/internationalization.md](docs/internationalization.md)
+
+**Supported Languages:**
+
+- English (en)
+- Arabic (ar)
+- Kurdish/Sorani (ckb)
+
+**Usage:**
+
+```tsx
+import { useTranslations } from "next-intl";
+
+const Component = () => {
+  const t = useTranslations("section_name");
+  return <h1>{t("title")}</h1>;
+};
+```
+
+**Key Rules:**
+
+- ✅ ALL text content must use next-intl
+- ✅ Use component-specific translation keys
+- ✅ Add translations to all 3 language files
+- ❌ NO hardcoded strings in components
 
 ---
 
-## 🎯 Quick Reference
+## 📋 Pre-Flight Checklist
 
-| Need          | Use                   | Location                              |
-| ------------- | --------------------- | ------------------------------------- |
-| Button        | `shadcn/ui`           | `npx shadcn@latest add button`        |
-| Icons         | Lucide React          | `import { Icon } from "lucide-react"` |
-| Styling       | Tailwind CSS + `cn()` | `className={cn("...")}`               |
-| Page sections | Extract to component  | `components/sections/`                |
-- **[Internationalization](docs/internationalization.md)** - i18n setup and usage with next-intl
-- **[Theme Management](docs/theme-dark-light-mode.md)** - Dark/light mode implementation
-- **[URL Parameters](docs/url-parameters.md)** - nuqs usage for URL state management
-- **[Motion & Animations](docs/motion.md)** - Framer Motion usage guidelines
-- **[Package Management](docs/package-management.md)** - Bun usage and best practices
-- **[Folder & File Conventions](docs/folder-file-conventions.md)** - Naming conventions
-- **[Documentation Standards](docs/documentation-standards.md)** - How to document code
+### Components
+
+- [ ] Is this component in the correct folder (`layout/`, `sections/`, `shared/`, `ui/`)?
+- [ ] Is the page file under ~100 lines?
+- [ ] Am I using shadcn/ui components (not custom)?
+- [ ] Using reusable CSS classes from globals.css?
+- [ ] Hover states using `group-hover:` (no useState)?
+
+### Translations
+
+- [ ] Using `useTranslations()` hook for all text?
+- [ ] Translation keys exist in all 3 files (en, ar, ckb)?
+- [ ] Component-specific translation namespace (e.g., "hero", "features")?
 
 ### Code Quality
 
 - [ ] All files are TypeScript (`.ts` or `.tsx`)?
-- [ ] Server actions marked with `'use server'`?
 - [ ] Client components marked with `'use client'`?
 - [ ] Using `cn()` for conditional Tailwind classes?
-- [ ] Using next-intl for all text content (not hardcoded strings)?
-- [ ] Using `useTranslations()` hook for translations?
-- [ ] All translation keys exist in `messages/en.json`, `messages/ar.json`, and `messages/ckb.json`?
+- [ ] Using motion/react for animations?
+- [ ] Proper TypeScript types defined?
 
 ### Before Submitting
 
@@ -344,20 +366,37 @@ npx shadcn@lateststatic data for portfolio content?
 2. Verify translations work in all supported languages (en, ar, ckb)
 3. Check dark/light mode compatibility
 4. Ensure responsive design works on all devices
-5. Run `bun run build` to check for build errors
-6. Ask for clarification if uncertai
+5. Test hover states with Tailwind only
+6. Run `bun run build` to check for build errors
+7. Verify contact form sends emails correctly
+8. Test on different screen sizes
+9. Ask for clarification if uncertain - do NOT improvise
 
-- [ ] Is the page file under ~100 lines?
-- [ ] Am I using shadcn/ui components (not custom)?
+---
 
-### Code Quality
+## 🎯 Quick Reference
 
-- [ ] All files are TypeScript (`.ts` or `.tsx`)?
-- [ ] Client components marked with `'use client'`?
-- [ ] Using `cn()` for conditional Tailwind classes?
-- [ ] Using i18next for all text content
+| Need             | Use                     | Location                              |
+| ---------------- | ----------------------- | ------------------------------------- |
+| Button           | `shadcn/ui`             | `npx shadcn@latest add button`        |
+| Icons            | Lucide React            | `import { Icon } from "lucide-react"` |
+| Styling          | Tailwind CSS + `cn()`   | `className={cn("...")}`               |
+| Translations     | next-intl               | `useTranslations("section")`          |
+| Animations       | motion/react            | Import from `animate.tsx`             |
+| Hover states     | Tailwind `group-hover:` | `className="group-hover:..."`         |
+| Reusable classes | globals.css @layer      | `className="section-container"`       |
+| Email            | Resend                  | `/api/contact/route.ts`               |
 
-3. Ask for clarification - do NOT improvise
+## 📚 Documentation
 
-**Remember:** Consistency is key to maintainability. Follow the patterns, use the approved tools, and keep the codebase clean.
-```
+- **[Component Organization](docs/component-organization.md)** - Structure and organization
+- **[UI Components](docs/ui-components.md)** - shadcn/ui usage guide
+- **[Internationalization](docs/internationalization.md)** - i18n setup and usage with next-intl
+- **[Theme Management](docs/theme-dark-light-mode.md)** - Dark/light mode implementation
+- **[URL Parameters](docs/url-parameters.md)** - nuqs usage for URL state management
+- **[Motion & Animations](docs/motion.md)** - motion/react usage guidelines
+- **[Package Management](docs/package-management.md)** - Bun usage and best practices
+
+---
+
+**Remember:** This is a kids shop landing page. Keep it colorful, playful, and simple. Follow the patterns, use the approved tools, and keep the codebase clean.

@@ -1,0 +1,91 @@
+{
+  "langs": {
+    "en": "English",
+    "ar": "العربية",
+    "ckb": "کوردی"
+  },
+  "header": {
+    "shop_name": "Yari Mndalan",
+    "shop_link": "Visit Shop"
+  },
+  "footer": {
+    "shop_name": "Yari Mndalan",
+    "description": "Your trusted destination for high-quality kids materials in Iraq. We deliver joy to your doorstep!",
+    "visit_shop": "Visit Our Shop",
+    "email": "Email",
+    "copyright": "© {year} Yari Mndalan. All rights reserved.",
+    "download_app": "Download App"
+  },
+  "hero": {
+    "title": "Welcome to",
+    "subtitle": "Yari Mndalan",
+    "description": "Discover the best collection of kids materials with safe online payment, fast shipping across Iraq, and exceptional service!",
+    "cta_button": "Shop Now",
+    "shopify_badge": "Powered by",
+    "download_app": "Download Our App",
+    "app_store": "App Store",
+    "play_store": "Play Store",
+    "download_on": "Download on"
+  },
+  "about": {
+    "title": "About Our Shop",
+    "description": "Learn more about our journey and what makes us special",
+    "founded_title": "Established",
+    "founded_desc": "Founded in 2020, we started with a mission to provide quality kids products to Iraqi families.",
+    "mission_title": "Our Mission",
+    "mission_desc": "To make shopping for kids materials easy, safe, and enjoyable for every family in Iraq.",
+    "values_title": "Our Values",
+    "values_desc": "Quality products, customer satisfaction, and building trust with every order we deliver."
+  },
+  "features": {
+    "title": "Why Choose Us",
+    "description": "Discover what makes shopping with Yari Mndalan special",
+    "categories_title": "Wide Categories",
+    "categories_desc": "Browse through diverse categories of kids materials - from toys to clothing and educational items.",
+    "payment_title": "Secure Payment",
+    "payment_desc": "Safe and easy online payment options to make your shopping experience smooth and worry-free.",
+    "shipping_title": "Iraq Shipping",
+    "shipping_desc": "Fast and reliable delivery across all Iraqi cities - we bring happiness to your doorstep!",
+    "languages_title": "3 Languages",
+    "languages_desc": "Shop in English, Arabic, or Kurdish - we speak your language for your convenience.",
+    "refund_title": "Easy Refunds",
+    "refund_desc": "Not satisfied? We offer hassle-free refund and return policies to ensure your satisfaction.",
+    "social_title": "Social Media",
+    "social_desc": "Stay connected with us on Facebook and Instagram for updates, offers, and more!"
+  },
+  "steps": {
+    "title": "How It Works",
+    "description": "Simple steps to get your favorite kids products delivered",
+    "step1_title": "Select Items",
+    "step1_desc": "Browse our collection and add your favorite items to the cart",
+    "step2_title": "Checkout",
+    "step2_desc": "Complete your order with secure payment options",
+    "step3_title": "Receive",
+    "step3_desc": "Get your order delivered to your home across Iraq"
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "description": "Have questions? We'd love to hear from you!",
+    "email_label": "Your Email",
+    "email_placeholder": "Enter your email address",
+    "message_label": "Message",
+    "message_placeholder": "Type your message here...",
+    "send_button": "Send Message",
+    "sending": "Sending...",
+    "success_title": "Message Sent!",
+    "success_message": "Thank you for contacting us. We'll get back to you soon!",
+    "error_title": "Error",
+    "error_message": "Failed to send message. Please try again later."
+  },
+  "not_found": {
+    "title": "Page Not Found",
+    "description": "Oops! The page you're looking for doesn't exist.",
+    "home_button": "Back to Home"
+  },
+  "error": {
+    "title": "Something Went Wrong",
+    "description": "We're sorry, but something unexpected happened.",
+    "retry_button": "Try Again",
+    "home_button": "Back to Home"
+  }
+}

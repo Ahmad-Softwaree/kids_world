@@ -1,15 +1,15 @@
-# Component Organization - UI Structure & Code Separation
+# Component Organization - Yari Mndalan Landing Page
 
 ## Overview
 
-To keep pages clean and maintainable, **separate complex UI into logical components**. Never let page files become bloated with hundreds of lines of JSX. This application follows a strict component organization pattern.
+This document outlines the component organization for the **Yari Mndalan kids shop landing page**. The project follows a clean, minimal structure suitable for a single-page application.
 
 ## Core Principles
 
 - ✅ **Extract components when pages exceed ~100 lines**
-- ✅ **Organize components by type and purpose**
-- ✅ **Keep page files focused on layout and data fetching**
-- ✅ **Reusable components go in organized folders**
+- ✅ **Organize components by type: layout, sections, shared, ui**
+- ✅ **Keep page files focused on layout and composition**
+- ✅ **Use reusable CSS classes from globals.css**
 - ❌ **NO massive page files with hundreds of lines of JSX**
 - ❌ **NO mixing unrelated components in the same file**
 - 🎯 **Single Responsibility Principle for components**
@@ -18,90 +18,123 @@ To keep pages clean and maintainable, **separate complex UI into logical compone
 
 ```
 components/
-├── ui/                    # shadcn/ui primitives (button, card, input, etc.)
+├── ui/                    # shadcn/ui primitives ONLY
 │   ├── button.tsx
 │   ├── card.tsx
+│   ├── input.tsx
+│   ├── textarea.tsx
 │   └── ...
 │
-├── cards/                 # Card components for different entities
-│   ├── certification-card.tsx
-│   ├── experience-card.tsx
-│   ├── project-card.tsx
-│   ├── service-card.tsx
-│   ├── skill-card.tsx
-│   ├── special-tool-card.tsx
-│   └── tool-card.tsx
-│
-├── btn/                   # Button components for filters and actions
-│   ├── certification-type-btn.tsx
-│   ├── project-tag-btn.tsx
-│   ├── project-tech-btn.tsx
-│   ├── project-type-btn.tsx
-│   ├── skill-level-btn.tsx
-│   ├── skill-type-btn.tsx
-│   └── tool-type-btn.tsx
-│
 ├── layout/                # Layout components
-│   ├── header.tsx
-│   ├── footer.tsx
-│   ├── logo.tsx
-│   ├── nav-menu.tsx
-│   └── mobile-navigation.tsx
+│   ├── header.tsx         # Header with logo, shop link, social media
+│   ├── footer.tsx         # Footer with info and links
+│   └── logo.tsx           # Shop logo
 │
-├── sections/              # Page sections (hero, about, services, etc.)
-│   ├── hero.tsx
-│   ├── about.tsx
-│   ├── services.tsx
-│   ├── experiences.tsx
-│   ├── skills.tsx
-│   ├── projects.tsx
-│   ├── certifications.tsx
-│   ├── tools.tsx
-│   └── contact.tsx
+├── sections/              # Landing page sections
+│   ├── hero.tsx           # Hero with animated blobs
+│   ├── about.tsx          # About shop (founded, mission, values)
+│   ├── features.tsx       # 6 feature cards
+│   ├── steps.tsx          # Purchase flow steps
+│   └── contact.tsx        # Contact form
 │
-├── shared/                # Globally shared components
-│   ├── animate.tsx        # Animation wrapper (framer-motion)
-│   ├── Loading.tsx
-│   ├── NoData.tsx
-│   ├── Search.tsx
-│   └── scroll-to-top.tsx
+├── shared/                # Shared reusable components
+│   ├── animate.tsx        # Animation wrappers (motion/react)
+│   ├── Loading.tsx        # Loading component
+│   └── scroll-to-top.tsx  # Scroll to top button
 │
-├── certifications/        # Certification page specific components
-│   ├── CertificationsHeader.tsx
-│   ├── CertificationsContent.tsx
-│   └── CertificationGrid.tsx
-│
-├── projects/              # Projects page specific components
-│   ├── ProjectsHeader.tsx
-│   ├── ProjectsContent.tsx
-│   └── ProjectsGrid.tsx
-│
-├── skills/                # Skills page specific components
-│   ├── SkillsHeader.tsx
-│   ├── SkillsFilter.tsx
-│   └── SkillsGrid.tsx
-│
-├── tools/                 # Tools page specific components
-│   ├── ToolsHeader.tsx
-│   ├── ToolsContent.tsx
-│   ├── ToolsGrid.tsx
-│   └── ContactHeader.tsx
-│
-├── lang-toggle.tsx        # Language switcher
-├── theme-toggle.tsx       # Dark/light mode toggle
-└── NotFound.tsx           # 404 component
+├── lang-toggle.tsx        # Language switcher (en/ar/ckb)
+└── theme-toggle.tsx       # Dark/light mode toggle
 ```
+
+├── sections/ # Page sections (hero, about, services, etc.)
+│ ├── hero.tsx
+
+## Landing Page Sections
+
+### 1. Hero Section (`/components/sections/hero.tsx`)
+
+The hero section includes:
+
+- Animated background blobs using CSS classes
+- Heading and subtitle with gradient text
+- Call-to-action button linking to Shopify shop
+- Uses `motion/react` for entrance animations
+
+**Usage:**
+
+```tsx
+import Hero from "@/components/sections/hero";
+
+<Hero />;
+```
+
+### 2. About Section (`/components/sections/about.tsx`)
+
+Displays shop information:
+
+- Shop founding story
+- Mission statement
+- Core values
+- Uses feature cards for visual appeal
+
+**Translation keys:**
+
+```json
+{
+  "about": {
+    "title": "About Our Shop",
+    "founded_title": "Established",
+    "mission_title": "Our Mission",
+    "values_title": "Our Values"
+  }
+}
+```
+
+### 3. Features Section (`/components/sections/features.tsx`)
+
+Shows 6 key shop features:
+
+- Wide product categories
+- Secure online payment
+- Shipping across Iraq
+- Multi-language support
+- Easy refunds
+- Social media presence
+
+Each feature uses:
+
+- `feature-card` CSS class
+- Icon from Lucide React
+- `group-hover:` for interactions (no useState)
+
+### 4. Steps Section (`/components/sections/steps.tsx`)
+
+Visual purchase flow:
+
+- Step 1: Select items
+- Step 2: Checkout
+- Step 3: Receive delivery
+- Arrows between steps (hidden on mobile)
+
+### 5. Contact Section (`/components/sections/contact.tsx`)
+
+Contact form with:
+
+- Email input field
+- Message textarea
+- Submit button with loading state
+- Toast notifications via sonner
+- API integration to `/api/contact`
 
 ## When to Extract a Component
 
 ### ✅ Extract when:
 
 - Page file exceeds ~100 lines
-- UI element is repeated across multiple pages
+- Component is used in multiple sections
 - Logic is complex or self-contained
 - Component has its own state management
 - Testing would benefit from isolation
-- Readability is improved by separation
 
 ### ❌ Keep inline when:
 
@@ -118,42 +151,32 @@ components/
 ```bash
 npx shadcn@latest add button
 npx shadcn@latest add card
+npx shadcn@latest add input
 ```
 
-### 2. Cards (`/components/cards`)
+### 2. Layout Components (`/components/layout`)
 
-Reusable card components that display portfolio content (projects, skills, certifications, etc.).
+Fixed layout elements that appear on every page:
 
 ```tsx
-// components/cards/project-card.tsx
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import type { Project } from "@/types/types";
+// components/layout/header.tsx
+// - Shop logo and name
+// - Social media links (Facebook, Instagram)
+// - Shop link button
+// - Language toggle
+// - Theme toggle
 
-interface ProjectCardProps {
-  project: Project;
-}
-
-export function ProjectCard({ project }: ProjectCardProps) {
-  return (
-    <Card>
-      <CardHeader>
-        <CardTitle>{project.name}</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <p className="text-sm text-muted-foreground">{project.description}</p>
-        <div className="flex gap-2 mt-4 flex-wrap">
-          {project.technologies.map((tech) => (
-            <Badge key={tech} variant="secondary">
-              {tech}
-            </Badge>
-          ))}
-        </div>
-      </CardContent>
-    </Card>
-  );
-}
+// components/layout/footer.tsx
+// - Shop information
+// - Social media links
+// - Visit shop button
+// - Copyright information
 ```
+
+);
+}
+
+````
 
 ### 3. Filter Buttons (`/components/btn`)
 
@@ -187,7 +210,7 @@ export function SkillTypeButton({
     </Button>
   );
 }
-```
+````
 
 ### 4. Layout Components (`/components/layout`)
 

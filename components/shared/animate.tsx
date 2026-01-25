@@ -322,25 +322,68 @@ export function CardHoverMotion({
 }
 
 /**
- * Slide in from side motion - for special tool cards
+ * Fade in motion - simple fade in animation
+ */
+interface FadeInMotionProps {
+  children: ReactNode;
+  className?: string;
+  delay?: number;
+}
+
+export function FadeInMotion({
+  children,
+  className,
+  delay = 0,
+}: FadeInMotionProps) {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay }}
+      className={cn(className)}>
+      {children}
+    </motion.div>
+  );
+}
+
+/**
+ * Slide in from side motion - for special tool cards and sections
  */
 interface SlideInMotionProps {
   children: ReactNode;
   className?: string;
-  direction?: "left" | "right";
+  direction?: "left" | "right" | "up" | "down";
+  delay?: number;
 }
 
 export function SlideInMotion({
   children,
   className,
   direction = "left",
+  delay = 0,
 }: SlideInMotionProps) {
+  const getInitialPosition = () => {
+    switch (direction) {
+      case "left":
+        return { opacity: 0, x: -50, y: 0 };
+      case "right":
+        return { opacity: 0, x: 50, y: 0 };
+      case "up":
+        return { opacity: 0, x: 0, y: 50 };
+      case "down":
+        return { opacity: 0, x: 0, y: -50 };
+      default:
+        return { opacity: 0, x: -50, y: 0 };
+    }
+  };
+
   return (
     <motion.div
-      initial={{ opacity: 0, x: direction === "left" ? -50 : 50 }}
-      whileInView={{ opacity: 1, x: 0 }}
+      initial={getInitialPosition()}
+      whileInView={{ opacity: 1, x: 0, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      transition={{ duration: 0.6, delay, ease: "easeOut" }}
       className={cn(className)}>
       {children}
     </motion.div>

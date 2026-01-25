@@ -25,7 +25,9 @@ const Header = () => {
         </Link>
 
         <div className="flex items-center gap-2 ms-auto">
-          <Link target="_blank" href="https://www.facebook.com/yarimndallan">
+          <Link
+            target="_blank"
+            href="https://www.facebook.com/jihanynweymndalan">
             <Button
               variant="ghost"
               className="rounded-full shadow-none"
@@ -34,7 +36,9 @@ const Header = () => {
               <Facebook className="h-5 w-5 text-primary hover:text-primary/80 transition-colors" />
             </Button>
           </Link>
-          <Link target="_blank" href="https://www.instagram.com/yarimndallan">
+          <Link
+            target="_blank"
+            href="https://www.instagram.com/jihany_nwey_mndalan">
             <Button
               variant="ghost"
               className="rounded-full shadow-none"
@@ -43,7 +47,7 @@ const Header = () => {
               <Instagram className="h-5 w-5 text-primary hover:text-primary/80 transition-colors" />
             </Button>
           </Link>
-          <Link target="_blank" href="https://shop.yarimndallan.com">
+          <Link target="_blank" href="https://shop.yarimndalan.com">
             <Button
               variant="default"
               className="rounded-full shadow-none gap-2"

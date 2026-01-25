@@ -93,35 +93,35 @@
 }
 
 :root {
-  /* Light mode - Vibrant, kid-friendly colors */
-  --background: oklch(0.99 0.01 120);
-  --foreground: oklch(0.25 0.02 280);
+  /* Light mode - Professional e-commerce colors */
+  --background: oklch(0.99 0.005 240);
+  --foreground: oklch(0.2 0.015 250);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.25 0.02 280);
+  --card-foreground: oklch(0.2 0.015 250);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.25 0.02 280);
-  /* Primary: Bright fun purple/magenta for kids */
-  --primary: oklch(0.58 0.24 320);
-  --primary-foreground: oklch(1 0 0);
-  /* Secondary: Cheerful orange */
-  --secondary: oklch(0.75 0.18 50);
-  --secondary-foreground: oklch(0.99 0.01 120);
-  --muted: oklch(0.96 0.02 280);
-  --muted-foreground: oklch(0.55 0.015 280);
-  /* Accent: Playful cyan/turquoise */
-  --accent: oklch(0.8 0.15 200);
-  --accent-foreground: oklch(0.25 0.02 280);
-  --destructive: oklch(0.6 0.22 25);
-  --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.92 0.02 280);
-  --input: oklch(0.95 0.02 280);
-  --ring: oklch(0.58 0.24 320);
-  /* Charts: Fun and vibrant colors */
-  --chart-1: oklch(0.58 0.24 320);
-  --chart-2: oklch(0.68 0.2 140);
-  --chart-3: oklch(0.75 0.18 50);
-  --chart-4: oklch(0.7 0.2 220);
-  --chart-5: oklch(0.65 0.18 350);
+  --popover-foreground: oklch(0.2 0.015 250);
+  /* Primary: Sophisticated navy blue */
+  --primary: oklch(0.45 0.12 250);
+  --primary-foreground: oklch(0.99 0.005 240);
+  /* Secondary: Warm coral/salmon */
+  --secondary: oklch(0.68 0.14 30);
+  --secondary-foreground: oklch(0.99 0.005 240);
+  --muted: oklch(0.95 0.01 240);
+  --muted-foreground: oklch(0.5 0.01 250);
+  /* Accent: Elegant teal */
+  --accent: oklch(0.6 0.12 190);
+  --accent-foreground: oklch(0.99 0.005 240);
+  --destructive: oklch(0.55 0.2 25);
+  --destructive-foreground: oklch(0.99 0.005 240);
+  --border: oklch(0.9 0.01 240);
+  --input: oklch(0.94 0.01 240);
+  --ring: oklch(0.45 0.12 250);
+  /* Charts: Professional palette */
+  --chart-1: oklch(0.45 0.12 250);
+  --chart-2: oklch(0.6 0.12 190);
+  --chart-3: oklch(0.68 0.14 30);
+  --chart-4: oklch(0.5 0.14 140);
+  --chart-5: oklch(0.55 0.12 320);
   --radius: 0.75rem;
   --sidebar: oklch(0.98 0.01 280);
   --sidebar-foreground: oklch(0.25 0.02 280);
@@ -134,35 +134,35 @@
 }
 
 .dark {
-  /* Dark mode - Softer, eye-friendly colors for kids */
-  --background: oklch(0.18 0.03 280);
-  --foreground: oklch(0.95 0.01 120);
-  --card: oklch(0.22 0.03 280);
-  --card-foreground: oklch(0.95 0.01 120);
-  --popover: oklch(0.22 0.03 280);
-  --popover-foreground: oklch(0.95 0.01 120);
-  /* Primary: Softer purple/magenta for dark mode */
-  --primary: oklch(0.68 0.22 320);
-  --primary-foreground: oklch(0.18 0.03 280);
-  /* Secondary: Warm orange */
-  --secondary: oklch(0.65 0.16 50);
-  --secondary-foreground: oklch(0.18 0.03 280);
-  --muted: oklch(0.28 0.03 280);
-  --muted-foreground: oklch(0.7 0.015 280);
-  /* Accent: Soft cyan */
-  --accent: oklch(0.65 0.14 200);
-  --accent-foreground: oklch(0.95 0.01 120);
-  --destructive: oklch(0.55 0.2 25);
-  --destructive-foreground: oklch(0.95 0.01 120);
-  --border: oklch(0.28 0.03 280);
-  --input: oklch(0.28 0.03 280);
-  --ring: oklch(0.68 0.22 320);
-  /* Charts: Vibrant but not harsh */
-  --chart-1: oklch(0.68 0.22 320);
-  --chart-2: oklch(0.72 0.18 140);
-  --chart-3: oklch(0.65 0.16 50);
-  --chart-4: oklch(0.65 0.18 220);
-  --chart-5: oklch(0.68 0.16 350);
+  /* Dark mode - Professional e-commerce dark theme */
+  --background: oklch(0.15 0.02 250);
+  --foreground: oklch(0.95 0.005 240);
+  --card: oklch(0.2 0.02 250);
+  --card-foreground: oklch(0.95 0.005 240);
+  --popover: oklch(0.2 0.02 250);
+  --popover-foreground: oklch(0.95 0.005 240);
+  /* Primary: Lighter navy for dark mode */
+  --primary: oklch(0.65 0.14 250);
+  --primary-foreground: oklch(0.15 0.02 250);
+  /* Secondary: Soft coral */
+  --secondary: oklch(0.7 0.12 30);
+  --secondary-foreground: oklch(0.15 0.02 250);
+  --muted: oklch(0.25 0.02 250);
+  --muted-foreground: oklch(0.65 0.01 240);
+  /* Accent: Soft teal */
+  --accent: oklch(0.65 0.11 190);
+  --accent-foreground: oklch(0.95 0.005 240);
+  --destructive: oklch(0.6 0.18 25);
+  --destructive-foreground: oklch(0.95 0.005 240);
+  --border: oklch(0.3 0.02 250);
+  --input: oklch(0.25 0.02 250);
+  --ring: oklch(0.65 0.14 250);
+  /* Charts: Professional dark palette */
+  --chart-1: oklch(0.65 0.14 250);
+  --chart-2: oklch(0.65 0.11 190);
+  --chart-3: oklch(0.7 0.12 30);
+  --chart-4: oklch(0.6 0.12 140);
+  --chart-5: oklch(0.62 0.1 320);
   --sidebar: oklch(0.22 0.03 280);
   --sidebar-foreground: oklch(0.95 0.01 120);
   --sidebar-primary: oklch(0.68 0.22 320);
@@ -292,15 +292,23 @@
 
   /* Feature Cards */
   .feature-card {
-    @apply group relative p-6 rounded-lg border bg-card hover:shadow-xl transition-all duration-300 hover:-translate-y-1;
+    @apply relative p-6 rounded-lg border bg-card hover:shadow-xl !transition-all !duration-300  hover:-translate-y-1;
   }
 
   .feature-icon {
-    @apply w-12 h-12 md:w-14 md:h-14 mb-4 text-primary group-hover:scale-110 transition-transform duration-300;
+    @apply w-12 h-12 md:w-14 md:h-14 mb-4 text-primary transition-transform duration-300;
+  }
+
+  .feature-card:hover .feature-icon {
+    @apply scale-110;
   }
 
   .feature-title {
-    @apply text-xl md:text-2xl font-semibold mb-2 group-hover:text-primary transition-colors;
+    @apply text-xl md:text-2xl font-semibold mb-2 transition-colors;
+  }
+
+  .feature-card:hover .feature-title {
+    @apply text-primary;
   }
 
   .feature-description {
@@ -309,20 +317,20 @@
 
   /* Buttons */
   .btn-primary {
-    @apply bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105;
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 rounded-lg font-semibold !transition-all !duration-300 hover:scale-105;
   }
 
   .btn-secondary {
-    @apply bg-secondary text-secondary-foreground hover:bg-secondary/90 px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105;
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/90 px-6 py-3 rounded-lg font-semibold !transition-all !duration-300 hover:scale-105;
   }
 
   /* Gradients */
   .gradient-primary {
-    @apply bg-gradient-to-r from-primary via-accent to-secondary;
+    @apply bg-gradient-to-r from-primary to-secondary;
   }
 
   .gradient-text {
-    @apply bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
   }
 
   /* Blob Decorations */
@@ -330,21 +338,9 @@
     @apply absolute rounded-full blur-3xl opacity-20 pointer-events-none;
   }
 
-  .blob-primary {
-    @apply blob bg-primary;
-  }
-
-  .blob-secondary {
-    @apply blob bg-secondary;
-  }
-
-  .blob-accent {
-    @apply blob bg-accent;
-  }
-
   /* Step Cards */
   .step-card {
-    @apply relative p-6 rounded-lg border bg-card hover:shadow-lg transition-all duration-300;
+    @apply relative p-6 rounded-lg border bg-card hover:shadow-lg !transition-all !duration-300;
   }
 
   .step-number {
