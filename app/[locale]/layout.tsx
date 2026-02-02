@@ -25,9 +25,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Yari Mndalan - Kids Clothing Store",
+  title: "Yari Mndalan - Kids Store",
   description:
-    "Yari Mndalan is your go-to kids clothing store, offering a delightful range of stylish and comfortable apparel for children of all ages. Discover our latest collections and enjoy a seamless shopping experience tailored for parents and kids alike.",
+    "Yari Mndalan is your go-to kids store, offering a delightful range of stylish and comfortable apparel for children of all ages. Discover our latest collections and enjoy a seamless shopping experience tailored for parents and kids alike.",
 };
 
 export default async function LocaleLayout({
